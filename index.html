@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+	<title>Tic Tac Toe</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+ <div id="app">
+    <div id="game">
+      <div id="turnText">
+        <div v-if="!finished">
+          <h3>Player:</h3>
+          <h2 v-if="isX">X</h2>
+          <h2 v-if="!isX">O</h2>
+        </div>
+        <div v-if="finished" id="winnerStatement">
+          <h3>Winner:</h3>
+          <h2> {{ winner }} </h2>
+        </div>
+      </div>
+      <table>
+        <tr v-for="(row, rowKey) in board">
+          <td v-for="(item, key) in row" v-on:click="function(){changeBrick(rowKey, key); checkWin(rowKey, key)}">{{ item }}</td>
+        </tr>
+      </table>
+      <br />
+      <button v-on:click="resetGame">Reset</button>
+    </div>
+  </div>
+
+<script type="text/javascript" src="vue.js"></script>
+<script type="text/javascript" src="main.js"></script>
+</body>
+</html>
